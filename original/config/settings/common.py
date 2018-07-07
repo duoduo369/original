@@ -31,7 +31,9 @@ THIRD_PARTY_APPS = (
     'rest_framework',
 )
 
-PROJECT_APPS = ()
+PROJECT_APPS = (
+    'account',
+)
 
 INSTALLED_APPS = []
 INSTALLED_APPS += DJANGO_APPS
@@ -125,3 +127,7 @@ LOGGING = {
         },
     }
 }
+
+AUTH_USER_MODEL = 'account.User'
+
+TESTING_MODE = False

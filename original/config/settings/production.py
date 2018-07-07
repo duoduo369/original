@@ -17,7 +17,8 @@ DATABASES = {
         'HOST': os.environ.get('ORIGINAL_MYSQL_HOST', 'localhost'),
         'USER': os.environ.get('ORIGINAL_MYSQL_USER', 'root'),
         'PASSWORD': os.environ.get('ORIGINAL_MYSQL_PASSWORD', None),
-        'PORT': os.environ.get('ORIGINAL_MYSQL_PORT', 3306)
+        'PORT': os.environ.get('ORIGINAL_MYSQL_PORT', 3306),
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
