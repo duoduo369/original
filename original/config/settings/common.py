@@ -29,6 +29,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = (
     'rest_framework',
+    'social_django',
 )
 
 PROJECT_APPS = (
@@ -48,7 +49,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-# AUTH_USER_MODEL = ''
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Internationalization
@@ -86,11 +86,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
             'debug': True,  # Django will only display debug pages if the global DEBUG setting is set to True
         },
     },
 ]
+
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
@@ -131,3 +134,41 @@ LOGGING = {
 AUTH_USER_MODEL = 'account.User'
 
 TESTING_MODE = False
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.weixin.WeixinOAuth2',
+    'social_core.backends.weixin.WeixinOAuth2APP',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'account.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'account.pipeline.social_auth.social_user_details',
+    'account.pipeline.social_auth.create_user',
+    'account.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
+
+SOCIAL_AUTH_USER_MODEL = 'account.User'
+SOCIAL_AUTH_UUID_LENGTH = 16
+
+SOCIAL_AUTH_LOGIN_URL = '/login-url/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new-users-redirect-url/'
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/new-association-redirect-url/'
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
+SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
+
+SOCIAL_AUTH_WEIXIN_KEY = ''
+SOCIAL_AUTH_WEIXIN_SECRET = ''
+SOCIAL_AUTH_WEIXIN_SCOPE = ['snsapi_login',]
+
+SOCIAL_AUTH_WEIXINAPP_KEY = ''
+SOCIAL_AUTH_WEIXINAPP_SECRET = ''
+SOCIAL_AUTH_WEIXINAPP_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_WEIXINAPP_SCOPE = ['snsapi_userinfo',]
