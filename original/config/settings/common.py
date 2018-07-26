@@ -133,7 +133,7 @@ LOGGING = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'common.rest.CsrfExemptSessionAuthentication',
+        'common.rest.CSRFExemptSessionAuthentication',
     ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
@@ -184,3 +184,6 @@ SOCIAL_AUTH_WEIXINAPP_KEY = ''
 SOCIAL_AUTH_WEIXINAPP_SECRET = ''
 SOCIAL_AUTH_WEIXINAPP_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_WEIXINAPP_SCOPE = ['snsapi_userinfo',]
+
+WEAAPP_KEY= ''
+WEAAPP_SECRET= ''

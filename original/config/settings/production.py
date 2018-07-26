@@ -56,5 +56,14 @@ LOGGING = {
     }
 }
 
+SOCIAL_AUTH_WEIXIN_KEY = os.environ.get('', '')
+SOCIAL_AUTH_WEIXIN_SECRET = os.environ.get('', '')
+
+SOCIAL_AUTH_WEIXINAPP_KEY = os.environ.get('', '')
+SOCIAL_AUTH_WEIXINAPP_SECRET = os.environ.get('', '')
+
+WEAAPP_KEY = os.environ.get('', '')
+WEAAPP_SECRET = os.environ.get('', '')
+
 if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'private_production.py')):
     from .private_production import *  # pylint: disable=import-error,wildcard-import

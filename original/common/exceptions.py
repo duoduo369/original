@@ -12,6 +12,7 @@ class ErrorCode(object):
     not_authenticated = 20005
     permission_denied = 20006
     authentication_failed = 20007
+    serializer_error = 20008
 
     validator_error = 30000
 
