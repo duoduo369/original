@@ -135,3 +135,6 @@ tags
 
 *pid
 celerybeat-schedule
+
+.qiniu_pythonsdk_hostscache.json
+fabfile.py

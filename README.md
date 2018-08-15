@@ -19,3 +19,24 @@ features
 TODO
 ---
 * redis 支持
+
+
+项目路径
+---
+* /data/vens  python vens
+* /data/app  所有项目根路径
+* /data/var/supervisor  supervisor 运行文件目录，socket、pid
+* /data/var/log  日志
+* /etc/nginx  nginx 相关配置目录
+* /etc/supervisor  supervisor  相关配置目录
+
+
+单次部署
+---
+
+将fabric文件路径改为自己的配置
+
+    sudo pip install fabric
+    cd /data/app/original
+    ln -s /data/app/original/deploy/fabric/ln_fabfile.py fabfile.py
+    fab deploy
