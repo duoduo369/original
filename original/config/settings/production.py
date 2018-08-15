@@ -65,5 +65,13 @@ SOCIAL_AUTH_WEIXINAPP_SECRET = os.environ.get('', '')
 WEAAPP_KEY = os.environ.get('', '')
 WEAAPP_SECRET = os.environ.get('', '')
 
+FILE_UPLOAD_KEY = os.environ.get('', '')
+FILE_UPLOAD_SECRET = os.environ.get('', '')
+FILE_UPLOAD_BUCKET = os.environ.get('', '')
+
+FILEUPLOAD_CALLBACK_URL = os.environ.get('', '')
+ORIGINAL_OAUTH2_CLIENT_ID = os.environ.get('', '')
+ORIGINAL_OAUTH2_CLIENT_SECRET = os.environ.get('', '')
+
 if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'private_production.py')):
     from .private_production import *  # pylint: disable=import-error,wildcard-import

@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('', include('social_django.urls', namespace='social')),
     url('', include('account.urls', namespace='account')),
+    url('', include('misc.urls', namespace='misc')),
 ]
 
 if settings.DEBUG:

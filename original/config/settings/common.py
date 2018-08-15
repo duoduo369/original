@@ -29,11 +29,13 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = (
     'rest_framework',
+    'oauth2_provider',
     'social_django',
 )
 
 PROJECT_APPS = (
     'account',
+    'misc',
 )
 
 INSTALLED_APPS = []
@@ -187,3 +189,15 @@ SOCIAL_AUTH_WEIXINAPP_SCOPE = ['snsapi_userinfo',]
 
 WEAAPP_KEY= ''
 WEAAPP_SECRET= ''
+
+FILE_UPLOAD_BACKEND = None # qiniu
+
+FILE_UPLOAD_KEY = ''
+FILE_UPLOAD_SECRET = ''
+FILE_UPLOAD_BUCKET = ''
+FILE_CALLBACK_POLICY = {}
+
+FILEUPLOAD_CALLBACK_URL = ''
+FILE_DOWNLOAD_PREFIX = ''
+ORIGINAL_OAUTH2_CLIENT_ID = ''
+ORIGINAL_OAUTH2_CLIENT_SECRET = ''

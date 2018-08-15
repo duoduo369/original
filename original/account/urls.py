@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import include, url
-from .views import LoginView
-from .weaapp import WEAAPPAuthView, WEAAPPUserInfoView
+from .views import LoginView, LoginAPI, LogoutAPI
+from .weaapp import WEAAPPAuthAPI, WEAAPPUserInfoAPI
 
 api_urlpatterns = [
-    url(r'^login/weaapp/$', WEAAPPAuthView.as_view(), name='login_weaapp'),
-    url(r'^userinfo/weaapp/$', WEAAPPUserInfoView.as_view(), name='weaapp_userinfo'),
+    url(r'^login/weaapp/$', WEAAPPAuthAPI.as_view(), name='login_weaapp'),
+    url(r'^login/$', LoginAPI.as_view(), name='cms_login'),
+    url(r'^logout/$', LogoutAPI.as_view(), name='logout'),
+    url(r'^userinfo/weaapp/$', WEAAPPUserInfoAPI.as_view(), name='weaapp_userinfo'),
 ]
 
 html_urlpatterns = [
