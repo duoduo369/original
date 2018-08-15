@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.conf import settings
-from django.utils.functional import SimpleLazyObject
-
 import qiniu
+
+from django.conf import settings
 from qiniu import Auth
 
 # TODO:
