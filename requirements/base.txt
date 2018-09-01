@@ -26,3 +26,8 @@ qiniu==7.2.2
 requests==2.13.0
 certifi==2015.9.6.2
 django-simple-history==1.9.0
+
+qcloudsms-py==0.1.1
+yunpian-python-sdk==1.0.0
+Pillow==5.2.0
+path.py==11.0.1

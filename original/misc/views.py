@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from django_validator.decorators import POST
+from common import weixin
 from common.upload import upload_handler
 from .models import UploadedFile
 
@@ -66,3 +67,14 @@ class FileUploadCallBackAPI(APIView):
             _file.is_active = True
             _file.save()
         return Response()
+
+
+class SignedJSConfig(APIView):
+
+    @GET('url', type='str', validators='required')
+    def get(self, request, url):
+        '''请添加ip白名单'''
+        appid = settings.SOCIAL_AUTH_WEIXINAPP_KEY
+        appsecret = settings.SOCIAL_AUTH_WEIXINAPP_SECRET
+        config = weixin.get_signed_js_config(url, appid, appsecret)
+        return Response(config)

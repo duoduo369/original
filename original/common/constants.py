@@ -2,6 +2,7 @@
 from enum import Enum, IntEnum, unique
 
 DEFAULT_LIMIT = 20
+VALIDATION_SESSION_KEY = 'verify'
 
 
 def get_key_by_value(enum, value):

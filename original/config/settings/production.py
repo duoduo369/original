@@ -87,5 +87,14 @@ REDIS_HOST = os.environ.get(get_env_key('REDIS_HOST'), 'localhost')
 REDIS_PORT = os.environ.get(get_env_key('REDIS_PORT'), 6379)
 REDIS_DB = os.environ.get(get_env_key('REDIS_DB'), '0')
 
+SMS_BACKEND = os.environ.get(get_env_key('SMS_BACKEND'), '')
+SMS_QCLOUD_KEY = os.environ.get(get_env_key('SMS_QCLOUD_KEY'), '')
+SMS_QCLOUD_SECRET = os.environ.get(get_env_key('SOCIAL_AUTH_WEIXINAPP_SECRET'), '')
+SMS_QCLOUD_DEFAULT_TEMPLATE_ID = os.environ.get(get_env_key('SMS_QCLOUD_DEFAULT_TEMPLATE_ID'), '')
+
+SMS_YUNPIAN_KEY = os.environ.get(get_env_key('SMS_YUNPIAN_KEY'), '')
+SMS_YUNPIAN_SECRET = os.environ.get(get_env_key('SOCIAL_AUTH_WEIXINAPP_SECRET'), '')
+SMS_YUNPIAN_DEFAULT_TEMPLATE_ID = os.environ.get(get_env_key('SMS_YUNPIAN_DEFAULT_TEMPLATE_ID'), '')
+
 if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'private_production.py')):
     from .private_production import *  # pylint: disable=import-error,wildcard-import

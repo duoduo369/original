@@ -15,6 +15,7 @@ class ErrorCode(object):
     serializer_error = 20008
 
     validator_error = 30000
+    sms_error = 30100
 
 
 class BaseException(Exception):
@@ -52,3 +53,9 @@ class APIParamException(APIException):
 
     def __init__(self, code=ErrorCode.invalid_parameter, message='invalid_parameter'):
         super(APIParamException, self).__init__(code=code, message=message)
+
+
+class APISMSException(APIException):
+
+    def __init__(self, code=ErrorCode.sms_error, message='sms_error'):
+        super(APISMSException, self).__init__(code=code, message=message)
