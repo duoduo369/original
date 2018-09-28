@@ -13,11 +13,13 @@ features
 * 简单的account逻辑
 * restframework
 * supervisor+gunicore+nginx，配置文件
-* cdn 图片上传，目前支持 qiniu
+* cdn 图片上传，目前支持 qiniu、腾讯云
 * 微信公众号jssdk签名
 * sms, 支持云片、腾讯云
 * 图形验证码
 * redis 支持
+* 二维码
+* cms 用户权限
 
 目录讲解
 ---

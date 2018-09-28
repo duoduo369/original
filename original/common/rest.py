@@ -68,7 +68,7 @@ def exception_handler(exc, context):
         data = {
             'detail': six.text_type(msg)
         }
-        exc_message = str(exc)
+        exc_message = unicode(exc)
         if 'CSRF' in exc_message:
             data['detail'] = exc_message
 

@@ -10,6 +10,7 @@ class User(AbstractUser):
     mobile = models.CharField(db_index=True, blank=True, default='', max_length=32, verbose_name=u'电话')
     email = models.EmailField(db_index=True, blank=True, default='',  max_length=64, verbose_name=u'邮箱')
     avatar = models.CharField(blank=True, max_length=255, default='', verbose_name=u'用户头像')
+    is_cms_user = models.BooleanField(default=False)
 
 
 class SocialAuthUnionID(models.Model):

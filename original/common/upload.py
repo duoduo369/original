@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+import logging
 import qiniu
 
 from django.conf import settings
 from qiniu import Auth
+from qcloud_cos import CosConfig
+from qcloud_cos import CosS3Client
+
 
 # TODO:
 
@@ -36,6 +40,27 @@ class UploadHandler(object):
         return '{}{}'.format(settings.FILE_DOWNLOAD_PREFIX, key)
 
 
+class QcloudUploadHandler(object):
+
+    def __init__(self, key, secret, bucket, region):
+        self.key = key
+        self.secret = secret
+        self.bucket = bucket
+        self.backend = qiniu
+        token = None
+        scheme = 'https'
+        config = CosConfig(Region=region, SecretId=key, SecretKey=secret, Token=token, Scheme=scheme)
+        self._client = CosS3Client(config)
+
+    def upload_file(self, key, data, policy=None, fname='file_name'):
+        return self._client.put_object(
+            Bucket=self.bucket, Body=data, Key=key, StorageClass='STANDARD',
+        )
+
+    def get_download_url(self, key):
+        return '{}{}'.format(settings.FILE_DOWNLOAD_PREFIX, key)
+
+
 upload_handler = None
 
 if settings.FILE_UPLOAD_BACKEND == 'qiniu':
@@ -43,4 +68,11 @@ if settings.FILE_UPLOAD_BACKEND == 'qiniu':
         settings.FILE_UPLOAD_KEY,
         settings.FILE_UPLOAD_SECRET,
         settings.FILE_UPLOAD_BUCKET
+    )
+elif settings.FILE_UPLOAD_BACKEND == 'qcloud':
+    upload_handler = QcloudUploadHandler(
+        settings.FILE_UPLOAD_KEY,
+        settings.FILE_UPLOAD_SECRET,
+        settings.FILE_UPLOAD_BUCKET,
+        settings.FILE_UPLOAD_REGION,
     )

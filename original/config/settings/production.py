@@ -76,6 +76,7 @@ WEAAPP_SECRET = os.environ.get(get_env_key('WEAAPP_SECRET'), '')
 FILE_UPLOAD_BACKEND = os.environ.get(get_env_key('FILE_UPLOAD_BACKEND'), '')
 FILE_UPLOAD_KEY = os.environ.get(get_env_key('FILE_UPLOAD_KEY'), '')
 FILE_UPLOAD_SECRET = os.environ.get(get_env_key('FILE_UPLOAD_SECRET'), '')
+FILE_UPLOAD_REGION = os.environ.get(get_env_key('FILE_UPLOAD_REGION'), '')
 FILE_UPLOAD_BUCKET = os.environ.get(get_env_key('FILE_UPLOAD_BUCKET'), '')
 
 FILEUPLOAD_CALLBACK_URL = os.environ.get(get_env_key('FILEUPLOAD_CALLBACK_URL'), '')
