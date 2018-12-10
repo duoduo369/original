@@ -2,7 +2,8 @@
 from django.conf.urls import include, url
 from .views import (
     FileUploadAPI, FileBase64UploadAPI, FileUploadCallBackAPI, SignedJSConfig,
-    SMSAPI, SMSCheckAPI,
+    SMSAPI, SMSCheckAPI, CallBackCCLiveStartAPI, CallBackCCLiveEndAPI,
+    CallBackCCRecordAPI, CallBackCCOfflineWatchAPI,
 )
 from . import validation
 
@@ -14,6 +15,10 @@ api_urlpatterns = [
     url(r'^validation/$', validation.validate_image, name='get_validate_image'),
     url(r'^sms/$', SMSAPI.as_view(), name='send_sms'),
     url(r'^sms/check/$', SMSCheckAPI.as_view(), name='send_check'),
+    url(r'^callback/cc/live/start/$', CallBackCCLiveStartAPI.as_view(), name='callback_cc_live_start'),
+    url(r'^callback/cc/live/end/$', CallBackCCLiveEndAPI.as_view(), name='callback_cc_live_end'),
+    url(r'^callback/cc/record/$', CallBackCCRecordAPI.as_view(), name='callback_cc_record'),
+    url(r'^callback/cc/offline/watch/$', CallBackCCOfflineWatchAPI.as_view(), name='callback_cc_offline_watch'),
 ]
 
 urlpatterns = [

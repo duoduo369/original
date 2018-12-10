@@ -185,3 +185,119 @@ class SMSCheckAPI(APIView):
             SMSValidateCheckFailures.increment_lockout_counter(phone_number)
             raise exceptions.APISMSException(code=exceptions.ErrorCode.sms_check_failed, message=u'验证码错误')
         return Response()
+
+
+class CallBackCCLiveStartAPI(APIView):
+
+    @GET('userId', type='str', validators='required')
+    @GET('roomId', type='str', validators='required')
+    @GET('liveId', type='str', validators='required')
+    @GET('type', type='str', validators='required')
+    @GET('startTime', type='str', validators='required')
+    @GET('data', type='str', default='')
+    def get(self, request, userId, roomId, liveId, type, startTime, data):
+        '''
+        直播开始回调
+        https://doc.bokecc.com/live/dev/callback/
+        userId  CC账号ID
+        roomId  直播间ID
+        liveId  直播ID
+        type    回调类型（参考回调类型说明）
+        startTime   直播开始时间, 格式为"yyyy-MM-dd HH:mm:ss"
+        '''
+        print '直播开始回调', userId, roomId, liveId, type, startTime, data
+        result = {"result": "OK"}
+        return Response(result)
+
+
+class CallBackCCLiveEndAPI(APIView):
+
+    @GET('userId', type='str', validators='required')
+    @GET('roomId', type='str', validators='required')
+    @GET('liveId', type='str', validators='required')
+    @GET('type', type='str', validators='required')
+    @GET('startTime', type='str', validators='required')
+    @GET('endTime', type='str', validators='required')
+    @GET('stopStatus', type='str', validators='required')
+    @GET('data', type='str', default='')
+    def get(self, request, userId, roomId, liveId, type, startTime, endTime, stopStatus, data):
+        '''
+        直播结束回调
+        https://doc.bokecc.com/live/dev/callback/
+        userId  CC账号ID
+        roomId  直播间ID
+        liveId  直播ID
+        type    回调类型（参考回调类型说明）
+        startTime   直播开始时间, 格式为"yyyy-MM-dd HH:mm:ss"
+        endTime 直播结束时间, 格式为"yyyy-MM-dd HH:mm:ss"
+        stopStatus  直播结束状态，10：正常结束，20：非正常结束
+        '''
+        print '直播结束回调', userId, roomId, liveId, type, startTime, endTime, stopStatus, data
+        result = {"result": "OK"}
+        return Response(result)
+
+
+class CallBackCCRecordAPI(APIView):
+
+    @GET('userId', type='str', validators='required')
+    @GET('roomId', type='str', validators='required')
+    @GET('liveId', type='str', validators='required')
+    @GET('recordId', type='str', validators='required')
+    @GET('type', type='str', validators='required')
+    @GET('startTime', type='str', validators='required')
+    @GET('endTime', type='str', default='')
+    @GET('recordStatus', type='str', default='')
+    @GET('recordVideoId', type='str', default='')
+    @GET('recordVideoDuration', type='str', default='')
+    @GET('replayUrl', type='str', default='')
+    @GET('data', type='str', default='')
+    def get(self, request, userId, roomId, liveId, recordId, type, startTime,
+            endTime, recordStatus, recordVideoId, recordVideoDuration, replayUrl, data):
+        '''
+        直播录制回调
+        https://doc.bokecc.com/live/dev/callback/
+        userId  CC账号
+        roomId  直播间ID
+        liveId  直播ID
+        recordId    回放ID
+        type    回调类型（参考回调类型说明）
+        startTime   录制开始时间, 格式为"yyyy-MM-dd HH:mm:ss"
+        endTime 录制结束时间, 格式为"yyyy-MM-dd HH:mm:ss"（回调类型type为102或103时，会返回该参数）
+        recordStatus    回放状态，10：回放处理成功，20：回放处理失败，30：录制时间过长（回调类型type为103时，会返回该参数）
+        recordVideoId   回放视频ID（回放状态recordStatus为10时，会返回该参数）
+        recordVideoDuration 回放视频时长，单位：秒（回放状态recordStatus为10时，会返回该参数）
+        replayUrl   回放观看地址（回放状态recordStatus为10时，会返回该参数）
+        '''
+        print '直播录制回调', userId, roomId, liveId, recordId, type, startTime, endTime, recordStatus, recordId, recordVideoDuration, replayUrl, data
+        result = {"result": "OK"}
+        return Response(result)
+
+
+class CallBackCCOfflineWatchAPI(APIView):
+
+    @GET('userId', type='str', validators='required')
+    @GET('roomId', type='str', validators='required')
+    @GET('liveId', type='str', validators='required')
+    @GET('recordId', type='str', validators='required')
+    @GET('type', type='str', validators='required')
+    @GET('offlineStatus', type='str', validators='required')
+    @GET('offlineMd5', type='str', validators='required')
+    @GET('offlineUrl', type='str', validators='required')
+    @GET('data', type='str', default='')
+    def get(self, request, userId, roomId, liveId, recordId, type,
+            offlineStatus, offlineMd5, offlineUrl, data):
+        '''
+        离线回放回调
+        https://doc.bokecc.com/live/dev/callback/
+        userId  CC账号
+        roomId  直播间ID
+        liveId  直播ID
+        recordId    回放ID
+        type    回调类型
+        offlineStatus   离线包可用状态（10：可用，20：不可用）
+        offlineMd5  离线包MD5
+        offlineUrl  离线包地址
+        '''
+        print '离线回放回调', userId, roomId, liveId, recordId, type, offlineStatus, offlineMd5, offlineUrl, data
+        result = {"result": "OK"}
+        return Response(result)
