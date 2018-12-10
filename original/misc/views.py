@@ -301,3 +301,39 @@ class CallBackCCOfflineWatchAPI(APIView):
         print '离线回放回调', userId, roomId, liveId, recordId, type, offlineStatus, offlineMd5, offlineUrl, data
         result = {"result": "OK"}
         return Response(result)
+
+
+class CCAuthAPI(APIView):
+
+    @POST('userid', type='str', validators='required')
+    @POST('roomid', type='str', validators='required')
+    @POST('viewername', type='str', validators='required')
+    @POST('viewertoken', type='str', validators='required')
+    @POST('viewercustomua', type='str', default='')
+    @POST('liveid', type='str', default='')
+    @POST('recordid', type='str', default='')
+    def post(self, request, userid, roomid, viewername, viewertoken, viewercustomua, liveid, recordid):
+        '''
+        cc自定义验证接口
+        https://doc.bokecc.com/live/dev/verification/
+        userid  字符串  用户ID
+        roomid  字符串  直播间ID
+        viewername  字符串  登陆用户名，限制20个字符
+        viewertoken 字符串  登录校验码，限制40个字符
+        viewercustomua  字符串  可选，用户uatype信息，限制40个字符
+        liveid  字符串  观看回放验证时会传递该参数
+        recordid    字符串  观看回放验证时会传递该参数
+        '''
+        print 'CC观看验证 CCAuthAPI', userid, roomid, viewername, viewertoken, viewercustomua, liveid, recordid
+        result = {
+            "result": "ok",
+            "message": "登录成功",
+            "user":{
+                "id": "E6A232B2DEDF69469C33DC5901307461",
+                "name": "咄咄",
+                "avatar": "https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/714f1f77jw8ej59v1bpsmj20u00u0q4s.jpg",
+                "customua": "customua1",
+                "viewercustommark": "mark1",
+            }
+        }
+        return Response(result)
