@@ -2,7 +2,7 @@
 from django.conf.urls import include, url
 from .views import (
     FileUploadAPI, FileBase64UploadAPI, FileUploadCallBackAPI, SignedJSConfig,
-    SMSAPI, SMSCheckAPI,
+    SMSAPI, SMSCheckAPI, CallBackCCLiveStartAPI,
 )
 from . import validation
 
@@ -14,6 +14,7 @@ api_urlpatterns = [
     url(r'^validation/$', validation.validate_image, name='get_validate_image'),
     url(r'^sms/$', SMSAPI.as_view(), name='send_sms'),
     url(r'^sms/check/$', SMSCheckAPI.as_view(), name='send_check'),
+    url(r'^callback/cc/live/start/$', CallBackCCLiveStartAPI.as_view(), name='callback_cc_live_start'),
 ]
 
 urlpatterns = [

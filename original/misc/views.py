@@ -185,3 +185,24 @@ class SMSCheckAPI(APIView):
             SMSValidateCheckFailures.increment_lockout_counter(phone_number)
             raise exceptions.APISMSException(code=exceptions.ErrorCode.sms_check_failed, message=u'验证码错误')
         return Response()
+
+
+class CallBackCCLiveStartAPI(APIView):
+
+    @GET('userId', type='str', validators='required')
+    @GET('roomId', type='str', validators='required')
+    @GET('liveId', type='str', validators='required')
+    @GET('type', type='str', validators='required')
+    @GET('startTime', type='str', validators='required')
+    def get(self, request, userId, roomId, liveId, type, startTime):
+        '''
+        https://doc.bokecc.com/live/dev/callback/
+        userId  CC账号ID
+        roomId  直播间ID
+        liveId  直播ID
+        type    回调类型（参考回调类型说明）
+        startTime   直播开始时间, 格式为"yyyy-MM-dd HH:mm:ss"
+        '''
+        print userId, roomId, liveId, type, startTime
+        result = {"result": "OK"}
+        return Response(result)
