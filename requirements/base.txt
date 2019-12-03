@@ -36,3 +36,4 @@ python-memcached==1.59
 gunicorn==19.9.0
 
 -e git+https://github.com/duoduo369/cos-python-sdk-v5.git@732c4b3357933421b07#egg=cos-python-sdk-v5
+-e git+https://github.com/duoduo369/django-mako.git@1177157317522edcc56d55a530dd3d7547dbb823#egg=django-mako

@@ -20,6 +20,7 @@ features
 * redis 支持
 * 二维码
 * cms 用户权限
+* django-mako 支持
 
 目录讲解
 ---

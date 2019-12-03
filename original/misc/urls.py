@@ -6,6 +6,7 @@ from .views import (
     CallBackCCRecordAPI, CallBackCCOfflineWatchAPI, CCAuthAPI,
 )
 from . import validation
+from . import html_views
 
 api_urlpatterns = [
     url(r'^file/upload/$', FileUploadAPI.as_view(), name='file_upload'),
@@ -22,6 +23,11 @@ api_urlpatterns = [
     url(r'^callback/cc/offline/watch/$', CallBackCCOfflineWatchAPI.as_view(), name='callback_cc_offline_watch'),
 ]
 
+html_urlpatterns = [
+    url(r'^mako_html/$', html_views.mako_html, name='mako_html'),
+]
+
 urlpatterns = [
     url(r'^api/v1/', include(api_urlpatterns, namespace='api.v1')),
+    url(r'', include(html_urlpatterns, namespace='html')),
 ]

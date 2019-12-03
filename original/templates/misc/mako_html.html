@@ -1,0 +1,29 @@
+<%page expression_filter="h"/>
+<%! import os %>
+<%inherit file="../base.html" />
+
+<%block name="js_extra">
+  <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.slim.min.map"></script>
+</%block>
+
+<%block name="bodyextra">
+<%
+  rows = [[v for v in range(0,10)] for row in range(0,10)] 
+%>
+
+<%def name="makerow(row)">
+    <tr>
+    % for name in row:
+        <td>${name}</td>\
+    % endfor
+    </tr>
+</%def>
+    ${t}
+
+    ${os.path.sep}
+    <table>
+        % for row in rows:
+            ${makerow(row)}
+        % endfor
+    </table>
+</%block>
