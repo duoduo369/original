@@ -1,4 +1,4 @@
-Django==1.11.10
+Django==1.11.23
 django-extensions==1.9.9
 arrow==0.12.1
 django_validator==0.2.7
