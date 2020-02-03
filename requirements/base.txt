@@ -1,3 +1,4 @@
+Faker==1.0.7
 Django==1.11.10
 django-extensions==1.9.9
 arrow==0.12.1
