@@ -10,7 +10,7 @@ django-model-utils==3.1.2
 social-auth-app-django==2.1.0
 social-auth-core==1.7.0
 wechatpy==1.7.3
-cryptography==2.2.2
+cryptography==3.2
 django-oauth-toolkit==1.1
 
 ipython<6
