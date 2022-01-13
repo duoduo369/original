@@ -30,7 +30,7 @@ django-simple-history==1.9.0
 
 qcloudsms-py==0.1.1
 yunpian-python-sdk==1.0.0
-Pillow==5.2.0
+Pillow==9.0.0
 path.py==11.0.1
 PyQRCode==1.2.1
 python-memcached==1.59
