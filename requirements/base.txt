@@ -1,7 +1,7 @@
 Faker==1.0.7
 Django==1.11.10
 django-extensions==1.9.9
-arrow==0.12.1
+arrow==0.15.1
 django_validator==0.2.7
 jsonfield==2.0.2
 djangorestframework==3.8.2
